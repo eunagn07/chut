@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentSpace - Find Your Perfect Room</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4A90E2;
+            --secondary: #2ECC71;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+        }
+
+        body {
+            background: #f5f7fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1rem;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: -2rem auto 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 1rem;
+        }
+
+        .search-input {
+            padding: 0.8rem;
+            border: 2px solid #eee;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 1.5rem;
+        }
+
+        .room-price {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-location {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+        }
+
+        .book-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .book-button:hover {
+            background: #357ABD;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .filter-button {
+            background: white;
+            border: 2px solid #eee;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .filter-button.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">StudentSpace</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#listings">Listings</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Find Your Perfect Student Room</h1>
+        <p>Thousands of verified rooms near your campus</p>
+    </section>
+
+    <div class="search-container">
+        <form class="search-form">
+            <input type="text" class="search-input" placeholder="Enter university or location">
+            <input type="number" class="search-input" placeholder="Max budget">
+            <button type="submit" class="search-button">Search Rooms</button>
+        </form>
+    </div>
+
+    <div class="filters">
+        <button class="filter-button active">All</button>
+        <button class="filter-button">Single Room</button>
+        <button class="filter-button">Shared Room</button>
+        <button class="filter-button">Studio</button>
+        <button class="filter-button">Apartment</button>
+    </div>
+
+    <div class="rooms-grid" id="roomsGrid">
+        <!-- Rooms will be dynamically added here -->
+    </div>
+
+    <script>
+        // Sample room data
+        const rooms = [
+            {
+                image: '/api/placeholder/400/320',
+                price: 'Rs.10000',
+                location: 'Near TMSL college',
+                features: ['Single Room', 'Private Bathroom', 'WiFi']
+            },
+            {
+                image: '/api/placeholder/400/320',
+                price: 'Rs.4500',
+                location: 'Close to NSEC College',
+                features: ['Shared Room', 'Kitchen Access', 'Bills Included']
+            },
+            {
+                image: '/api/placeholder/400/320',
+                price: 'Rs.7500',
+                location: ' Newtown Area',
+                features: ['Studio', 'En-suite', 'Gym Access']
+            }
+        ];
+
+        // Function to create room cards
+        function createRoomCard(room) {
+            return `
+                <div class="room-card">
+                    <img src="${room.image}" alt="Room" class="room-image">
+                    <div class="room-info">
+                        <div class="room-price">${room.price}/month</div>
+                        <div class="room-location">${room.location}</div>
+                        <div class="features">
+                            ${room.features.map(feature => `
+                                <span class="feature">
+                                    <span>•</span>
+                                    ${feature}
+                                </span>
+                            `).join('')}
+                        </div>
+                        <button class="book-button">Book Viewing</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Populate rooms grid
+        const roomsGrid = document.getElementById('roomsGrid');
+        rooms.forEach(room => {
+            roomsGrid.innerHTML += createRoomCard(room);
+        });
+
+        // Filter buttons functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Search form functionality
+        const searchForm = document.querySelector('.search-form');
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add search functionality here
+            alert('Search functionality would be implemented here!');
+        });
+
+        // Booking button functionality
+        document.querySelectorAll('.book-button').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Booking form would appear here!');
+            });
+        });
+    </script>
+</body>
+</html>
